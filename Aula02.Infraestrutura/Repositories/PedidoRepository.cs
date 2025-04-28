@@ -15,7 +15,7 @@ namespace Aula02.Infraestrutura.Repositories
 
         public async Task AtualizarPedidoAsync(Pedido pPedido) 
         { 
-            _context.Entry(pPedido).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Entry(pPedido).State = EntityState.Modified;
             
             await _context.SaveChangesAsync();  
         }

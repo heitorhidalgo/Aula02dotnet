@@ -4,14 +4,14 @@ namespace Aula02.Domain.Interfaces
 {
     public interface IPedidoService
     {
-        Task<Pedido> RetornaPedidoPorId(int pId);
+        Task<Pedido> RetornaPedidoPorIdAsync(int pId);
         Task<IEnumerable<Pedido>> RetornaTodosPedidosAsync();
 
-        Task<Pedido> CriarPedidoAsync(Pedido pPedido);
+        Task<Pedido> CriarPedido(Pedido pPedido);
 
-        Task<bool> AtualizarPedidoAsync(Pedido pPedido);
+        Task<bool> AtualizarPedido(Pedido pPedido);
 
-        Task<bool> ExcluirPedidoAsync(int pId);
+        Task<bool> ExcluirPedido(int pId);
 
     }
 }

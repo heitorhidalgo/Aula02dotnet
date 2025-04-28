@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Aula02.Infraestrutura.Data;
 using Aula02.Domain.Interfaces;
+using Aula02.Infraestrutura.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IClienteRepository, IClienteRepository>();
 builder.Services.AddScoped<IClienteService, IClienteService>();
+
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 var app = builder.Build();
 

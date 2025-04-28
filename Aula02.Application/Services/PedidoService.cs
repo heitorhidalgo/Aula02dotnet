@@ -20,9 +20,8 @@ namespace Aula02.Application.Services
                 if (pedido == null)
                     return false;
 
-                pedido.DataPedido = pPedido.DataPedido;
                 pedido.ValorTotal = pPedido.ValorTotal;
-                pedido.ClienteId = pPedido.ClienteId;
+                
 
                 await _pedidoRepository.AtualizarPedidoAsync(pPedido);
             }
@@ -48,11 +47,11 @@ namespace Aula02.Application.Services
             }
         }
 
-        public async Task<bool> ExcluirPedido(Pedido pPedido)
+        public async Task<bool> ExcluirPedido(int pId)
         {
             try
             {
-                Pedido pedido = await _pedidoRepository.RetornaPedidoPorIdAsync(pPedido.Id);
+                Pedido pedido = await _pedidoRepository.RetornaPedidoPorIdAsync(pId);
 
                 if (pedido == null)
                     return false;
@@ -64,8 +63,26 @@ namespace Aula02.Application.Services
             catch (Exception ex)
             {
                 throw;
+
             }
         }
+
+        public async Task<Pedido> RetornaPedidoPorIdAsync(int pId)
+        {
+            try 
+            {
+                Pedido pedido = await _pedidoRepository.RetornaPedidoPorIdAsync(pId);
+                if (pedido == null)
+                    return null;
+
+                return pedido;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+        }
+
         public async Task<IEnumerable<Pedido>> RetornaTodosPedidosAsync()
         {
             try
